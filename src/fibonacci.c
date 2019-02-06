@@ -57,7 +57,6 @@ void log_ab(
     //         j, a[arr_size - j - 1], b[arr_size - j - 1]);
     // }
     // fprintf(stderr, "\n");
-    fflush(stderr);
 }
 
 
@@ -77,22 +76,23 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    printf("Fibonacci sequence generator\n");
-    printf("Array size: %lu MB\n", arr_size * sizeof(unsigned long long) / (1024 * 1024));
-    // printf("arr_size: %lu\n", arr_size);
-    // printf("llu_max: %llu\n", llu_max);
-    printf("\n");
-    fflush(stdout);
+    fprintf(stderr, "Fibonacci sequence generator\n");
+    fprintf(stderr, "Array size: %lu MB\n", arr_size * sizeof(unsigned long long) / (1024 * 1024));
+    // fprintf(stderr, "arr_size: %lu\n", arr_size);
+    // fprintf(stderr, "llu_max: %llu\n", llu_max);
+    fprintf(stderr, "\n");
 
+    t = time(NULL);
+
+    fprintf(stderr, "Initialising arrays\n");
     for (unsigned long j = 0; j < arr_size; j += 1) {
         a[j] = 0;
         b[j] = 0;
     }
-
     a[arr_size - 1] = 1;
     b[arr_size - 1] = 1;
 
-    t = time(NULL);
+    fprintf(stderr, "Running adding\n");
     while (1) {
         if (step % 100000 == 0) {
             log_ab(a, b, lena, lenb, step, t);
