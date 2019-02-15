@@ -61,8 +61,8 @@ void log_ab(
 
 
 int main(int argc, char** argv) {
-    unsigned long long *a = malloc(arr_size * sizeof(unsigned long long));
-    unsigned long long *b = malloc(arr_size * sizeof(unsigned long long));
+    unsigned long long *a = calloc(arr_size, sizeof(unsigned long long));
+    unsigned long long *b = calloc(arr_size, sizeof(unsigned long long));
     unsigned long lena = 1, lenb = 1;
     unsigned long step = 0;
     unsigned long t;
@@ -84,11 +84,6 @@ int main(int argc, char** argv) {
 
     t = time(NULL);
 
-    fprintf(stderr, "Initialising arrays\n");
-    for (unsigned long j = 0; j < arr_size; j += 1) {
-        a[j] = 0;
-        b[j] = 0;
-    }
     a[arr_size - 1] = 1;
     b[arr_size - 1] = 1;
 
